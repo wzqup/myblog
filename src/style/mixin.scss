@@ -1,0 +1,81 @@
+@mixin text-ellipsis() {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+@mixin text-ellipsis-multi($line) {
+	display: -webkit-box;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: $line;
+	-webkit-box-orient: vertical;
+}
+
+@mixin flex-center($direction: row) {
+	display: flex;
+	flex-direction: $direction;
+	align-items: center;
+	justify-content: center;
+}
+
+@mixin box-shadow {
+	box-shadow:2px 0 5px rgba(0,0,0,0.2);
+}
+@mixin bgColor {
+	 background-image:linear-gradient(
+		115deg,
+		#4fcf70,
+		#fad648,
+		#a767e5,
+		#12bcfe,
+		#44ce7b
+	);
+}
+@mixin bgAnm {
+	animation: borderAnm 0.5s linear infinite;
+}
+@mixin lgStr($bgColor){
+	background-image: $bgColor;
+	background-size: 200% 100%;
+	background-clip: text;
+	color: transparent;
+}
+@mixin img-wrap($width, $height: $width) {
+	width: $width;
+	height: $height;
+	flex-shrink: 0;
+
+	img {
+		width: 100%;
+		height: 100%;
+	}
+}
+
+@mixin abs-stretch {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	top: 0;
+	right: 0;
+}
+
+@mixin abs-center {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+@mixin round($d) {
+	width: $d;
+	height: $d;
+	border-radius: 50%;
+}
+
+@mixin content($width:1150px,$height:100%,$bgcColor:rgba(255, 0, 0, 0.3),$padding:10px) {
+	width: $width;
+	height: $height;
+	background-color: $bgcColor;
+	padding: $padding;
+}
