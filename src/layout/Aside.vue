@@ -78,7 +78,7 @@ export default {
             // 隐藏侧边栏
             this.trsin = !this.trsin;
             // 父元素是否有padding
-            this.$parent.padding = this.trsin;
+			this.$parent.padding = this.trsin;
         },
         // 显示收起按钮
         showBtnFn() {

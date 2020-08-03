@@ -14,7 +14,7 @@
         <div class="viewBox">
             <div class="music-list">
                 <!-- 歌曲列表 -->
-                <el-table :data="songs" style="width: 100%">
+                <el-table :data="songs" style="width: 100%;" height="100%">
                     <el-table-column prop="img" :width="100">
                         <template slot-scope="scope">
                             <img
@@ -304,7 +304,7 @@ export default {
         .music-list {
             flex: 9;
             background-color: green;
-            overflow-y: auto;
+            overflow: auto;
         }
         .music-type {
             float: right;
