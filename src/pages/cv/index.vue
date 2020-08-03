@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="cv-page">
         <TopBar :titleStr="titleStr" />
         <Details />
     </div>
@@ -15,8 +15,8 @@ export default {
     data() {
         return {
             titleStr: {
-                title: "关于我",
-                tip: "简单介绍下我自己"
+                title: "我的简历",
+                tip: "完整版PDF简历，请在右边下载"
             }
         };
     }

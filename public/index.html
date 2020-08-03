@@ -4,9 +4,10 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" id="view">
 	<link rel="icon" href="<%= BASE_URL %>favicon.ico">
 	<title>Davi-w的个人主页</title>
+	<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_1900066_isejjoag1lr.css" />
 	<style>
 		/* loading */
 		body,
@@ -22,7 +23,8 @@
 			width: 100%;
 			height: 100%;
 			background-color: #131417;
-			display: -webkit-flex; /* Safari */
+			display: -webkit-flex;
+			/* Safari */
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
@@ -34,7 +36,8 @@
 			margin-bottom: 10px;
 		}
 
-		.index-loading>h1,.index-loading>p {
+		.index-loading>h1,
+		.index-loading>p {
 			margin: 0 0;
 			background-image: linear-gradient(115deg,
 					#4fcf70,
@@ -47,7 +50,6 @@
 			background-clip: text;
 			color: transparent;
 		}
-
 	</style>
 </head>
 
@@ -58,9 +60,7 @@
 	</noscript>
 	<div id="app">
 		<div class="index-loading">
-			<img class="logo" src="./loading.svg" />
-			<h1>Hello, welcome!</h1>
-			<p>努力加载中，请稍等...</p>
+			<img class="logo" src="http://qeh59wtc2.bkt.clouddn.com/loading.svg" />
 		</div>
 	</div>
 	<!-- built files will be auto injected -->

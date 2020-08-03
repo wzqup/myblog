@@ -65,41 +65,41 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@media screen and (min-width: 1280px) {
-    .details-box {
-        width: 1150px;
-        height: auto;
-        background-color: transparent;
-        padding: 0px;
-        margin: 0 auto;
-        box-sizing: border-box;
-        padding-top: 20px;
-        .container {
-            width: 100%;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            // border: 1px dashed #ccc;
-            .item {
-                width: 48%;
-                height: 330px;
-                border-radius: 5px;
-                background-color: #1f2229;
-                margin-bottom: 10px;
-                padding: 10px;
-                div {
+.details-box {
+    width: 1150px;
+    height: auto;
+    background-color: transparent;
+    padding: 0px;
+    margin: 0 auto;
+    box-sizing: border-box;
+	padding-top: 20px;
+	padding-bottom: 50px;
+	position: relative;
+    .container {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        .item {
+            width: 48%;
+            height: 330px;
+            border-radius: 5px;
+            background-color: #1f2229;
+            margin-bottom: 10px;
+            padding: 10px;
+            div {
+                width: 100%;
+                height: 100%;
+                img {
                     width: 100%;
-                    height: 100%;
-                    img {
-                        width: 100%;
-                        height: 270px;
-                        border-radius: 5px;
-                    }
-                    p {
-                        a {
-                            margin-right: 10px;
-                        }
+                    height: 270px;
+                    border-radius: 5px;
+                }
+                p {
+					font-size: 14px;
+                    a {
+                        margin-right: 10px;
                     }
                 }
             }
@@ -110,35 +110,10 @@ export default {
 @media screen and (max-width: 1280px) and(min-width: 750px) {
     .details-box {
         width: 750px;
-        height: auto;
-        background-color: transparent;
-        padding: 0px;
-        margin: 0 auto;
-        box-sizing: border-box;
-        padding-top: 20px;
         .container {
-            width: 700px;
             .item {
-                height: 330px;
-                border-radius: 5px;
-                background-color: #1f2229;
-                margin: 0 auto;
-                margin-bottom: 10px;
-                padding: 10px;
-                div {
-                    width: 100%;
-                    height: 100%;
-                    img {
-                        width: 100%;
-                        height: 270px;
-                        border-radius: 5px;
-                    }
-                    p {
-                        a {
-                            margin-right: 10px;
-                        }
-                    }
-                }
+				width: 100%;
+				margin: 20px auto;
             }
         }
     }
@@ -147,35 +122,9 @@ export default {
 @media screen and (max-width: 750px) {
     .details-box {
         width: 375px;
-        height: auto;
-        background-color: transparent;
-        padding: 0px;
-        margin: 0 auto;
-        box-sizing: border-box;
-        padding-top: 20px;
         .container {
-            width: 350px;
             .item {
-                height: 330px;
-                border-radius: 5px;
-                background-color: #1f2229;
-                margin: 0 auto;
-                margin-bottom: 10px;
-                padding: 10px;
-                div {
-                    width: 100%;
-                    height: 100%;
-                    img {
-                        width: 100%;
-                        height: 270px;
-                        border-radius: 5px;
-                    }
-                    p {
-                        a {
-                            margin-right: 10px;
-                        }
-                    }
-                }
+				width: 100%;
             }
         }
     }

@@ -48,21 +48,25 @@ $menu-bgcolor: #000;
 $scrollbar-color: #fff;
 
 // 渐变色
-$bgColor:  linear-gradient(
-	115deg,
+$bgColor: linear-gradient(115deg,
 	#4fcf70,
 	#fad648,
 	#a767e5,
 	#12bcfe,
-	#44ce7b
-);
+	#44ce7b);
 
 // 字体渐变色
-$strColor: linear-gradient(
-	45deg,
+$strColor: linear-gradient(45deg,
 	blue,
 	red 25%,
 	blue 50%,
 	red 75%,
-	blue
-);
+	blue);
+
+// 进度条渐变色(线性渐变)
+$timeBarColor: repeating-linear-gradient(45deg,
+	#ff6464 0,
+	#ff6464 50%,
+	#ff4949 50%,
+	#ff4949 100%
+)

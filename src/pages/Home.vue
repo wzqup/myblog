@@ -6,7 +6,7 @@
         <Aside />
         <!-- 内容区 -->
         <main class="main">
-			<router-view></router-view>
+    	   	<router-view></router-view>			
         </main>
     </div>
 </template>
@@ -17,13 +17,13 @@ import Aside from "../layout/Aside";
 export default {
     components: {
         // Header,
-		Aside
-	},
-	data(){
-		return{
-			padding: true
-		}
-	}
+        Aside
+    },
+    data() {
+        return {
+            padding: true
+        };
+    }
 };
 </script>
 
@@ -73,20 +73,33 @@ export default {
     height: 100%;
     background-color: #131417;
     color: white;
-	transition: all 1s;
-	padding-left: 20px;
+    transition: all 1s;
+    padding-left: 12px;
+    background-image: url("http://qeh59wtc2.bkt.clouddn.com/coolgirl.png");
+    background-size: cover;
+    &::before {
+        content: "";
+        @include abs-stretch;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
 }
 .home:not(.no-padding) {
     padding-left: 188px;
 }
 .main {
-	width: 100%;
-	height: 100%;
-	background-size: 30%;
-	box-sizing: border-box;
-	overflow: auto;
-	position: relative;
-	background-color: $mainColor;
-	padding-bottom: 166px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: auto;
+    position: relative;
+}
+@media screen and (max-width: 750px) {
+    .home {
+		background-image: url("http://qeh59wtc2.bkt.clouddn.com/boy.png");
+		padding-left: 0px;
+    }
+    .home:not(.no-padding) {
+        padding-left: 0px;
+    }
 }
 </style>

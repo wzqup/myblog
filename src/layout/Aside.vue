@@ -8,18 +8,29 @@
         <div class="logo">CODE MAN</div>
         <div class="photoBox">
             <div class="photo">
-                <!-- <div class="tx"></div> -->
-				<img class="tx" src="http://demo.qfpffmp.cn/cssthemes6/ddjb_6_booster/images/pro.jpg" alt="">
+                <img class="tx" src="http://qeh59wtc2.bkt.clouddn.com/tx.jpg" alt />
             </div>
         </div>
         <div class="menu">
             <h2>个人信息</h2>
             <ul class="list-wrap">
-                <li class="list-item" :class="[active === 1 ? 'active':'']" @click="active = 1">
+                <li class="list-item" :class="[active === 'aboutme' ? 'active':'']">
                     <router-link to="/aboutme">关于我</router-link>
                 </li>
-                <li class="list-item" :class="[active === 2 ? 'active' : '']" @click="active = 2">
+                <li class="list-item" :class="[active === 'cv' ? 'active' : '']">
+                    <router-link to="/cv">我的简历</router-link>
+                </li>
+            </ul>
+            <h2>项目展示</h2>
+            <ul class="list-wrap">
+                <li class="list-item" :class="[active === 'project' ? 'active' : '']">
                     <router-link to="/project">项目经历</router-link>
+                </li>
+                <li class="list-item" :class="[active === 'demolist' ? 'active' : '']">
+                    <router-link to="/demolist">DEMO</router-link>
+                </li>
+                <li class="list-item" :class="[active === 'myblog' ? 'active' : '']">
+                    <router-link to="/myblog">我的博客</router-link>
                 </li>
             </ul>
         </div>
@@ -46,19 +57,21 @@
 export default {
     data() {
         return {
-            showBtn: false, // 显示隐藏按钮
-            trsin: true, 	// 隐藏显示侧边导航
-			barAnm: false,	// 是否显示动画
-			active:1		// 当前选中的选项
+            showBtn: true, // 显示隐藏按钮
+            trsin: true, // 隐藏显示侧边导航
+            barAnm: false, // 是否显示动画
+            active: this.$route.name, // 当前选中的选项
+            switch: true, // 是否默认显示收起按钮
         };
-	},
-	mounted(){
-		const that = this;
-		that.clientHeight = `${document.documentElement.clientWidth}`
-		if(that.clientHeight < 1280){
-			this.showBtn = true;
-		}
-	},
+    },
+    mounted() {
+        this.switch = document.body.clientWidth > 750;
+
+        window.onresize = () => {
+            this.switch = document.body.clientWidth > 750;
+            if (!this.switch) this.showBtn = true;
+        };
+    },
     methods: {
         // 点击收起按钮
         hiddenAside() {
@@ -69,19 +82,25 @@ export default {
         },
         // 显示收起按钮
         showBtnFn() {
-           if(this.trsin) this.showBtn = true;
+            if (this.trsin && this.switch) this.showBtn = true;
         },
         hidBtnFn() {
-           if(this.trsin) this.showBtn = false;
-		},
-		// 是否显示条形的动画
+            if (this.trsin && this.switch) this.showBtn = false;
+        },
+        // 是否显示条形的动画
         showBarAnm() {
-			if(!this.trsin) this.barAnm = true
+            if (!this.trsin) this.barAnm = true;
         },
         hidBarAnm() {
-			if(!this.trsin) this.barAnm = false
-		}
-    }
+            if (!this.trsin) this.barAnm = false;
+        },
+    },
+    // 监听路由变化
+    watch: {
+        $route(to, from) {
+            this.active = to.name;
+        },
+    },
 };
 </script>
 
@@ -155,6 +174,7 @@ export default {
                     line-height: 26px;
                     color: #fff;
                     border: 1px $btnBgc dashed;
+					font-size: 12px;
                     letter-spacing: 2px;
                     &:hover {
                         background-color: #000;
@@ -187,7 +207,6 @@ export default {
         position: absolute;
         top: 0px;
         right: 0px;
-		background-color: $asideColor;
         z-index: 1;
     }
 }
@@ -238,8 +257,25 @@ export default {
 .trs-leave-active {
     transition: all 0.3s ease-in-out;
 }
-.trs-enter, .trs-leave-to
-/* .slide-fade-leave-active for below version 2.1.8 */ {
+.trs-enter,
+.trs-leave-to {
     transform: translateX(-12px);
+}
+
+@keyframes pyAnm {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-188px);
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .aside {
+        .side .btn {
+            animation: pyAnm 1s 2;
+        }
+    }
 }
 </style>

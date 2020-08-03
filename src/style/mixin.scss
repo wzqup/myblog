@@ -73,7 +73,7 @@
 	border-radius: 50%;
 }
 
-@mixin content($width:1150px,$height:100%,$bgcColor:rgba(255, 0, 0, 0.3),$padding:10px) {
+@mixin content($width:1150px,$height:100%,$bgcColor:rgba(255, 0, 0, 0.3),$padding:0px) {
 	width: $width;
 	height: $height;
 	background-color: $bgcColor;
