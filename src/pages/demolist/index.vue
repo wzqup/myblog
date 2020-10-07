@@ -1,5 +1,5 @@
 <template>
-    <div class="demolist-page" v-if="PC">
+    <div class="demolist-page" v-if="PC" >
         <!-- 展示窗口 -->
         <div class="view">
             <router-view></router-view>
@@ -13,7 +13,7 @@
                     ref="li"
                     @click="demoChange(index)"
                     v-for="(item,index) in demoName"
-                    :key="item.title"
+                    :key="index"
                 >
                     <div class="title">{{item.title}}</div>
                     <div class="tips" v-if="item.tips">
@@ -46,7 +46,7 @@ export default {
                     componentName: "timebar",
                     tips: [
                         "点击头像进行设置",
-                        "点击句子可更新",
+                        "点击句子可更新-句子来源：一言",
                         "设置数据保存在localStorage",
                     ],
                 },
@@ -54,13 +54,41 @@ export default {
                     title: "音乐播放器",
                     componentName: "music",
                     tips: [
-                        "点击图片播放",
-                        "控件只有播放按钮可用",
-                        "其他功能正在开发中",
+						"点击图片播放，显示播放器控件，已播放时间",
+						"使用vuex对公用状态进行管理",
+						"歌曲来源-网易云音乐"
                     ],
                 },
                 {
-                    title: "3D正方体",
+                    title: "敬请期待",
+                    componentName: "cube",
+                },
+                {
+                    title: "敬请期待",
+                    componentName: "cube",
+                },
+                {
+                    title: "敬请期待",
+                    componentName: "cube",
+                },
+                {
+                    title: "敬请期待",
+                    componentName: "cube",
+                },
+                {
+                    title: "敬请期待",
+                    componentName: "cube",
+                },
+                {
+                    title: "敬请期待",
+                    componentName: "cube",
+                },
+                {
+                    title: "敬请期待",
+                    componentName: "cube",
+                },
+                {
+                    title: "敬请期待",
                     componentName: "cube",
                 },
             ],
@@ -71,8 +99,7 @@ export default {
         };
     },
     created() {
-		// this.PC = this.isPC();
-		this.PC = true;
+        this.PC = true;
     },
     mounted() {
         if (this.$refs.li) {
@@ -147,8 +174,7 @@ export default {
         top: 50px;
         margin: 0 auto;
         width: 800px;
-        height: 640px;
-        box-shadow: 0px 0px 12px 2px #fff;
+		height: 600px;
     }
     .menu {
         position: relative;
@@ -161,6 +187,10 @@ export default {
             z-index: 999;
             width: 100px;
             @include flex-center;
+			&:hover{
+				color: deepskyblue;
+				cursor: pointer;
+			}
             i {
                 font-size: 66px;
             }
@@ -191,6 +221,7 @@ export default {
                 flex-direction: column;
                 justify-content: center;
                 flex-shrink: 0;
+				cursor: pointer;
                 .title {
                     font-size: 36px;
                     font-weight: bold;
@@ -199,7 +230,10 @@ export default {
                 }
                 .tips {
                     color: springgreen;
-                    margin-top: 10px;
+					margin-top: 10px;
+					p{
+						@include text-ellipsis;
+					}
                 }
             }
         }
@@ -208,7 +242,7 @@ export default {
 .demolist-page::before {
     content: "";
     @include abs-stretch;
-    background: url("../../assets/img/bg.png") $mainColor;
+    background: url($baseUrl+"/bg.png") $mainColor;
     animation: bgmove 40s infinite linear;
 }
 </style>

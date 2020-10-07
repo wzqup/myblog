@@ -16,7 +16,7 @@ export default {
         return {
             titleStr: {
                 title: "我的简历",
-                tip: "完整版PDF简历，请在右边下载"
+                tip: ""
             }
         };
     }

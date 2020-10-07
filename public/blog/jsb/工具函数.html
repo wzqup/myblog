@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>日期时间格式化</title>
+    <meta name="generator" content="VuePress 1.5.2">
+    
+    <meta name="description" content="不定期更新">
+    <link rel="preload" href="/blog/assets/css/0.styles.b89722a2.css" as="style"><link rel="preload" href="/blog/assets/js/app.cbfe7c8a.js" as="script"><link rel="preload" href="/blog/assets/js/2.ceb96644.js" as="script"><link rel="preload" href="/blog/assets/js/8.d54f5dc6.js" as="script"><link rel="prefetch" href="/blog/assets/js/10.cbf0dac3.js"><link rel="prefetch" href="/blog/assets/js/11.07098245.js"><link rel="prefetch" href="/blog/assets/js/12.d6273dbb.js"><link rel="prefetch" href="/blog/assets/js/13.7943b60b.js"><link rel="prefetch" href="/blog/assets/js/14.0ab742b1.js"><link rel="prefetch" href="/blog/assets/js/3.8099ba9f.js"><link rel="prefetch" href="/blog/assets/js/4.7d5f245c.js"><link rel="prefetch" href="/blog/assets/js/5.a3b3e033.js"><link rel="prefetch" href="/blog/assets/js/6.9a636937.js"><link rel="prefetch" href="/blog/assets/js/7.2c1cfb48.js"><link rel="prefetch" href="/blog/assets/js/9.30ff685e.js">
+    <link rel="stylesheet" href="/blog/assets/css/0.styles.b89722a2.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blog/" class="home-link router-link-active"><img src="/blog/imgs/logo.png" alt="" class="logo"> <!----></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>原理类</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>实战篇</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>记事本</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blog/jsb/工具函数.html" class="active sidebar-link">工具函数</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/blog/jsb/工具函数.html#日期时间格式化" class="sidebar-link">日期时间格式化</a></li></ul></li><li><a href="/blog/jsb/flex.html" class="sidebar-link">flex布局属性</a></li><li><a href="/blog/jsb/批处理.html" class="sidebar-link">批处理及手动推送更新</a></li><li><a href="/blog/jsb/在数组中查找某个元素.html" class="sidebar-link">在数组中查找某个元素</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="日期时间格式化"><a href="#日期时间格式化" class="header-anchor">#</a> 日期时间格式化</h2> <div class="language-javascript extra-class"><pre class="language-javascript"><code>	<span class="token keyword">const</span> <span class="token function-variable function">zeroPadding</span> <span class="token operator">=</span> <span class="token parameter">data</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span><span class="token function">String</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">1</span> <span class="token operator">?</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">0</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>data<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span> <span class="token operator">:</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">const</span> dataFormatter <span class="token operator">=</span> <span class="token punctuation">(</span>date<span class="token punctuation">,</span>formatter <span class="token operator">=</span> <span class="token string">&quot;YYYY/MM/DD hh:mm:ss&quot;</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+		date <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>date<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+		<span class="token keyword">let</span> <span class="token constant">YYYY</span> <span class="token operator">=</span> date<span class="token punctuation">.</span><span class="token function">getFullYear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">let</span> <span class="token constant">MM</span> <span class="token operator">=</span> <span class="token function">zeroPadding</span><span class="token punctuation">(</span>date<span class="token punctuation">.</span><span class="token function">getMonth</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">let</span> <span class="token constant">DD</span> <span class="token operator">=</span> <span class="token function">zeroPadding</span><span class="token punctuation">(</span>date<span class="token punctuation">.</span><span class="token function">getDate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">let</span> hh <span class="token operator">=</span> <span class="token function">zeroPadding</span><span class="token punctuation">(</span>date<span class="token punctuation">.</span><span class="token function">getHours</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">let</span> mm <span class="token operator">=</span> <span class="token function">zeroPadding</span><span class="token punctuation">(</span>date<span class="token punctuation">.</span><span class="token function">getMinutes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">let</span> ss <span class="token operator">=</span> <span class="token function">zeroPadding</span><span class="token punctuation">(</span>date<span class="token punctuation">.</span><span class="token function">getSeconds</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+		<span class="token keyword">const</span> replaceDir <span class="token operator">=</span> <span class="token punctuation">{</span>
+			<span class="token constant">YYYY</span><span class="token punctuation">,</span>
+			<span class="token constant">MM</span><span class="token punctuation">,</span>
+			<span class="token constant">DD</span><span class="token punctuation">,</span>
+			hh<span class="token punctuation">,</span>
+			mm<span class="token punctuation">,</span>
+			ss
+		<span class="token punctuation">}</span>
+
+		<span class="token keyword">return</span> formatter<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex">/(YYYY|MM|DD|hh|mm|ss)/g</span><span class="token punctuation">,</span><span class="token parameter">tag</span> <span class="token operator">=&gt;</span> replaceDir<span class="token punctuation">[</span>tag<span class="token punctuation">]</span> <span class="token operator">||</span> tag<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/blog/sz/lazy.html" class="prev">
+        图片懒加载
+      </a></span> <span class="next"><a href="/blog/jsb/flex.html">
+        flex布局属性
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/blog/assets/js/app.cbfe7c8a.js" defer></script><script src="/blog/assets/js/2.ceb96644.js" defer></script><script src="/blog/assets/js/8.d54f5dc6.js" defer></script>
+  </body>
+</html>

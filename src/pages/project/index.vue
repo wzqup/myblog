@@ -1,6 +1,6 @@
 <template>
     <div class="project-page">
-        <TopBar :titleStr="titleStr" />
+        <TopBar :titleStr="titleStr"  :colorClass = "'three'" />
         <Details />
     </div>
 </template>
@@ -15,8 +15,8 @@ export default {
     data() {
         return {
             titleStr: {
-                title: "项目经历",
-                tip: "部分工作所经历的项目"
+                title: "项目经验",
+                tip: "部分工作所参与的项目(最近的四个)"
             }
         };
     }
@@ -24,21 +24,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@keyframes bgmove {
-    0% {
-        background-position-y: 0px, 0%;
-    }
-    100% {
-        background-position-y: -1085px, 0%;
-    }
-}
-.project-page{
-	position: relative;
-}
-.project-page::before{
-	content: '';
-	@include abs-stretch;
-	background: url("../../assets/img/bg.png") $mainColor;
-	animation: bgmove 40s infinite linear;
-}
 </style>

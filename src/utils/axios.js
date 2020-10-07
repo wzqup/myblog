@@ -1,15 +1,6 @@
 import axios from 'axios'
 
-// 调用方法
-// export default {
-// 	install(Vue){
-// 		// axios.defaults.baseURL = 'https://api.mtnhao.com/';
-// 		Vue.prototype.$http = axios
-// 	}
-// }
-
 export const musicRequest = createInstance('https://api.mtnhao.com/');
-export const request = createInstance('https://api.aaaa.com/');
 
 
 function createInstance (baseUrl){

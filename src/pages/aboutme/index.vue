@@ -1,6 +1,6 @@
 <template>
     <div>
-        <TopBar :titleStr="titleStr" />
+        <TopBar :titleStr="titleStr" :colorClass = "'two'" />
         <Details />
     </div>
 </template>
@@ -10,14 +10,14 @@ import Details from "./Details";
 export default {
     components: {
         TopBar,
-        Details
+		Details
     },
     data() {
         return {
             titleStr: {
                 title: "关于我",
-                tip: "简单介绍下我自己"
-            }
+                tip: "",
+            },
         };
     }
 };

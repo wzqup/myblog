@@ -8,28 +8,30 @@ import router from './router'
 
 import './utils/rem.js'
 
-// import axios from './utils/axios'
-// Vue.use(axios)
+import VueLazyload from "vue-lazyload"
 
-import { Button,Card,Cascader,InputNumber,Switch,Dialog,Input,Select,Option,DatePicker,Table,TableColumn} from 'element-ui'
+import Msg from "./components/message"
+
+import store from "./store/index"
+
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+
+Vue.use(ElementUI);
+Vue.use(Msg);
+const EMPTY_IMG = "";
+
+Vue.use(VueLazyload, {
+	loading: EMPTY_IMG,
+	error: EMPTY_IMG,
+});
+
 
 Vue.config.productionTip = false
-
-Vue.use(Button);
-Vue.use(Card);
-Vue.use(Cascader);
-Vue.use(InputNumber);
-Vue.use(Switch);
-Vue.use(Dialog);
-Vue.use(Input);
-Vue.use(Select);
-Vue.use(Option);
-Vue.use(DatePicker);
-Vue.use(Table);
-Vue.use(TableColumn);
-
-
 new Vue({
 	render: h => h(App),
-	router
+	router,
+	store
 }).$mount('#app')
+
+console.log('2020/10/7 update');

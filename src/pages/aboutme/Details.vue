@@ -1,7 +1,7 @@
 <template>
     <div class="details-box">
         <div class="container">
-            <div class="item" v-for="item in strObj" :key="item.id">
+            <div class="item" v-for="item in strObj" :key="item.id" :class="`item-${item.id}`">
                 <div class="imgBox">
                     <img :src="item.imgUrl" alt />
                 </div>
@@ -21,11 +21,11 @@ export default {
             strObj: [
                 {
                     id: "1",
-                    title: "梦想摆渡人",
+                    title: "梦想改造家",
                     imgUrl:
                         "http://xuanwen.wang/public/images/photo-team-1.jpg",
                     content:
-                        "我是南昌工程学院应用电子技术专业2015级毕业生,在阿里巴巴渠道商江西聚友网络科技有限公司进行实习,期间接触到前端开发,感觉非常适合我,于是开启web前端开发之旅。"
+                        "小时候想当科学家，其实也不只科学家，还有很多。后因为朋友的影响而踏足前端，感觉很幸运，弃其它而从码，让我对自己的人生方向更加坚定。",
                 },
                 {
                     id: "2",
@@ -33,19 +33,19 @@ export default {
                         "http://xuanwen.wang/public/images/photo-team-2.jpg",
                     title: "前端工程师",
                     content:
-                        "17年入职第一家以前端开发为岗位的公司，从一个初级实习生开始，历经万般险阻，其中辛酸只有自知。幸运的是，学到了很多，进步了很多，积累了大量的开发经验，成为一个真正合格的“前端攻城狮”!"
+                        "17年入职第一家以前端开发为岗位的公司，从一个初级实习生开始，历经万般险阻，其中辛酸只有自知。幸运的是，学到了很多，进步了很多，积累了大量的开发经验，成为一个真正合格的“前端攻城狮”!",
                 },
                 {
                     id: "3",
-                    title: "我的爱好",
+                    title: "年轻人",
                     imgUrl:
                         "http://xuanwen.wang/public/images/photo-team-3.jpg",
                     content:
-                        "闲暇时光喜欢看电影、玩游戏或者到处走走,拿着相机拍拍好看的风景、发现的美好事物。很喜欢的一句话--如果终其一生都畏手畏脚那将会很无趣，不怀疑自己，不畏惧失败才是我们该有的样子"
-                }
-            ]
+                        `闲暇时光喜欢看电影、玩游戏或者到处走走,拍拍好看的风景、发现美好事物。偶尔看看书，很喜欢的一句话——“如果终其一生都畏手畏脚那将会很无趣，不怀疑自己，不畏惧失败才是年轻人该有的样子"。希望我能一直是个年轻人！`,
+                },
+            ],
         };
-    }
+    },
 };
 </script>
 
@@ -89,6 +89,15 @@ export default {
                     margin-top: 20px;
                 }
             }
+        }
+        .item-1 {
+            animation: bounceInRight 1s;
+        }
+        .item-2 {
+            animation: bounceInRight 2s;
+        }
+        .item-3 {
+            animation: bounceInRight 3s;
         }
     }
 }

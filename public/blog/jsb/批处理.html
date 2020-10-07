@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>使用批处理提交代码</title>
+    <meta name="generator" content="VuePress 1.5.2">
+    
+    <meta name="description" content="不定期更新">
+    <link rel="preload" href="/blog/assets/css/0.styles.b89722a2.css" as="style"><link rel="preload" href="/blog/assets/js/app.cbfe7c8a.js" as="script"><link rel="preload" href="/blog/assets/js/2.ceb96644.js" as="script"><link rel="preload" href="/blog/assets/js/9.30ff685e.js" as="script"><link rel="prefetch" href="/blog/assets/js/10.cbf0dac3.js"><link rel="prefetch" href="/blog/assets/js/11.07098245.js"><link rel="prefetch" href="/blog/assets/js/12.d6273dbb.js"><link rel="prefetch" href="/blog/assets/js/13.7943b60b.js"><link rel="prefetch" href="/blog/assets/js/14.0ab742b1.js"><link rel="prefetch" href="/blog/assets/js/3.8099ba9f.js"><link rel="prefetch" href="/blog/assets/js/4.7d5f245c.js"><link rel="prefetch" href="/blog/assets/js/5.a3b3e033.js"><link rel="prefetch" href="/blog/assets/js/6.9a636937.js"><link rel="prefetch" href="/blog/assets/js/7.2c1cfb48.js"><link rel="prefetch" href="/blog/assets/js/8.d54f5dc6.js">
+    <link rel="stylesheet" href="/blog/assets/css/0.styles.b89722a2.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blog/" class="home-link router-link-active"><img src="/blog/imgs/logo.png" alt="" class="logo"> <!----></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>原理类</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>实战篇</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>记事本</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blog/jsb/工具函数.html" class="sidebar-link">工具函数</a></li><li><a href="/blog/jsb/flex.html" class="sidebar-link">flex布局属性</a></li><li><a href="/blog/jsb/批处理.html" class="active sidebar-link">批处理及手动推送更新</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/blog/jsb/批处理.html#使用批处理提交代码" class="sidebar-link">使用批处理提交代码</a></li><li class="sidebar-sub-header"><a href="/blog/jsb/批处理.html#手动推送更新个人博客代码到gitee" class="sidebar-link">手动推送更新个人博客代码到Gitee</a></li></ul></li><li><a href="/blog/jsb/在数组中查找某个元素.html" class="sidebar-link">在数组中查找某个元素</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="使用批处理提交代码"><a href="#使用批处理提交代码" class="header-anchor">#</a> 使用批处理提交代码</h2> <blockquote><p>个人代码库,无需考虑冲突时使用</p></blockquote> <p>1.git批处理</p> <p>新建text文件输入如下:</p> <div class="language-bat extra-class"><pre class="language-text"><code>GIT提交批处理
+git add -A .
+echo 执行结束！
+set /p declation=输入commit:
+git commit -m &quot;%declation%&quot;
+echo 将变更情况提交到远程git服务器
+git push origin master
+echo 批处理执行完毕！
+pause
+</code></pre></div><p>2.另存为修改编码为ANSI格式,否则出现乱码,不好看,后缀改为bat,OK</p> <h2 id="手动推送更新个人博客代码到gitee"><a href="#手动推送更新个人博客代码到gitee" class="header-anchor">#</a> 手动推送更新个人博客代码到Gitee</h2> <p>在项目目录下，创建内容如下的 deploy.sh (可以适当地取消注释) 并运行它以进行部署：</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token shebang important">#!/usr/bin/env sh</span>
+
+<span class="token comment"># 当发生错误时中止脚本</span>
+<span class="token builtin class-name">set</span> -e
+
+<span class="token comment"># 构建no</span>
+<span class="token function">npm</span> run build
+
+<span class="token comment"># cd 到构建输出的目录下 </span>
+<span class="token builtin class-name">cd</span> dist
+
+<span class="token function">git</span> init
+<span class="token function">git</span> <span class="token function">add</span> -A
+<span class="token function">git</span> commit -m <span class="token string">'deploy'</span>
+
+<span class="token comment"># git@gitee.com:deep-brez/deep-brez.git --&gt; 仓库ssh公钥</span>
+<span class="token comment"># 注意使用-f会将本地代码覆盖远程仓库</span>
+<span class="token function">git</span> push -f git@gitee.com:deep-brez/deep-brez.git master
+
+<span class="token builtin class-name">cd</span> -
+</code></pre></div><p>使用此方式推送,需要在Gitee设置里添加账户ssh</p> <p>可以按如下命令来生成 sshkey:</p> <p>命令行输入:</p> <div class="language- extra-class"><pre class="language-text"><code>ssh-keygen -t rsa -C &quot;xxxxx@xxxxx.com&quot;  
+</code></pre></div><p>注意：这里的 xxxxx@xxxxx.com 只是生成的 sshkey 的名称，并不约束或要求具体命名为某个邮箱。
+现网的大部分教程均讲解的使用邮箱生成，其一开始的初衷仅仅是为了便于辨识所以使用了邮箱。</p> <p>按照提示完成三次回车，即可生成 ssh key。通过查看 ~/.ssh/id_rsa.pub 文件内容，获取到你的 public key</p> <div class="language- extra-class"><pre class="language-text"><code>cat ~/.ssh/id_rsa.pub
+</code></pre></div><p>复制生成后的 ssh key，通过gitee的设置-&gt;ssh公钥添加到账户。</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/blog/jsb/flex.html" class="prev">
+        flex布局属性
+      </a></span> <span class="next"><a href="/blog/jsb/在数组中查找某个元素.html">
+        在数组中查找某个元素
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/blog/assets/js/app.cbfe7c8a.js" defer></script><script src="/blog/assets/js/2.ceb96644.js" defer></script><script src="/blog/assets/js/9.30ff685e.js" defer></script>
+  </body>
+</html>

@@ -8,19 +8,10 @@
         <div class="logo">CODE MAN</div>
         <div class="photoBox">
             <div class="photo">
-                <img class="tx" src="http://qeh59wtc2.bkt.clouddn.com/tx.jpg" alt />
+                <img class="tx" src="http://deep-brez.gitee.io/img/mypage/me.png" alt />
             </div>
         </div>
         <div class="menu">
-            <h2>个人信息</h2>
-            <ul class="list-wrap">
-                <li class="list-item" :class="[active === 'aboutme' ? 'active':'']">
-                    <router-link to="/aboutme">关于我</router-link>
-                </li>
-                <li class="list-item" :class="[active === 'cv' ? 'active' : '']">
-                    <router-link to="/cv">我的简历</router-link>
-                </li>
-            </ul>
             <h2>项目展示</h2>
             <ul class="list-wrap">
                 <li class="list-item" :class="[active === 'project' ? 'active' : '']">
@@ -31,6 +22,24 @@
                 </li>
                 <li class="list-item" :class="[active === 'myblog' ? 'active' : '']">
                     <router-link to="/myblog">我的博客</router-link>
+                </li>
+            </ul>
+            <h2>个人信息</h2>
+            <ul class="list-wrap height2">
+                <li class="list-item" :class="[active === 'aboutme' ? 'active':'']">
+                    <router-link to="/aboutme">关于我</router-link>
+                </li>
+                <li class="list-item" :class="[active === 'cv' ? 'active' : '']">
+                    <router-link to="/cv">我的简历</router-link>
+                </li>
+            </ul>
+            <h2>其它</h2>
+            <ul class="list-wrap height2">
+                <li class="list-item" :class="[active === 'favorites' ? 'active' : '']">
+                    <router-link to="/favorites">我的收藏</router-link>
+                </li>
+                <li class="list-item" :class="[active === 'message' ? 'active' : '']">
+                    <router-link to="/message">给我留言</router-link>
                 </li>
             </ul>
         </div>
@@ -78,7 +87,7 @@ export default {
             // 隐藏侧边栏
             this.trsin = !this.trsin;
             // 父元素是否有padding
-			this.$parent.padding = this.trsin;
+            this.$parent.padding = this.trsin;
         },
         // 显示收起按钮
         showBtnFn() {
@@ -98,7 +107,11 @@ export default {
     // 监听路由变化
     watch: {
         $route(to, from) {
-            this.active = to.name;
+            if (to.path.indexOf("demolist") > -1) {
+                this.active = "demolist";
+            } else {
+                this.active = to.name;
+            }
         },
     },
 };
@@ -112,7 +125,7 @@ export default {
     position: fixed;
     left: 0;
     top: 0;
-    z-index: 666;
+    z-index: 66666;
     box-sizing: border-box;
     @include box-shadow;
     .logo {
@@ -174,7 +187,7 @@ export default {
                     line-height: 26px;
                     color: #fff;
                     border: 1px $btnBgc dashed;
-					font-size: 12px;
+                    font-size: 12px;
                     letter-spacing: 2px;
                     &:hover {
                         background-color: #000;
@@ -188,6 +201,9 @@ export default {
                     transition: all 0.5s;
                 }
             }
+        }
+        .height2 {
+            height: 124px;
         }
     }
     .btn {
@@ -204,6 +220,7 @@ export default {
     .side-bar {
         width: 12px;
         height: 120%;
+        background-color: $asideColor;
         position: absolute;
         top: 0px;
         right: 0px;

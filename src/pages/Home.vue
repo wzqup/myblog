@@ -1,29 +1,25 @@
 <template>
     <div class="home" :class="[padding ? 'has-padding':'no-padding']">
-        <!-- 顶部导航 -->
-        <!-- <Header /> -->
         <!-- 侧边栏 -->
         <Aside />
         <!-- 内容区 -->
         <main class="main">
-    	   	<router-view></router-view>			
+            <router-view></router-view>
         </main>
     </div>
 </template>
 
 <script>
-// import Header from "../layout/Header";
 import Aside from "../layout/Aside";
 export default {
     components: {
-        // Header,
-        Aside
+        Aside,
     },
     data() {
         return {
-            padding: true
+            padding: true,
         };
-    }
+    },
 };
 </script>
 
@@ -71,11 +67,11 @@ export default {
 .home {
     width: 100%;
     height: 100%;
-    background-color: #131417;
+    background-color: #1e1f26;
     color: white;
     transition: all 1s;
     padding-left: 12px;
-    background-image: url("http://qeh59wtc2.bkt.clouddn.com/coolgirl.png");
+	background: url($baseUrl+'/fss.png');
     background-size: cover;
     &::before {
         content: "";
@@ -87,6 +83,7 @@ export default {
     padding-left: 188px;
 }
 .main {
+    flex: 1;
     width: 100%;
     height: 100%;
     box-sizing: border-box;
@@ -95,8 +92,9 @@ export default {
 }
 @media screen and (max-width: 750px) {
     .home {
-		background-image: url("http://qeh59wtc2.bkt.clouddn.com/boy.png");
-		padding-left: 0px;
+		background:url($baseUrl+'/boy.png') center center;
+		background-size:100%;
+        padding-left: 0px;
     }
     .home:not(.no-padding) {
         padding-left: 0px;
