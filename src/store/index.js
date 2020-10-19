@@ -16,7 +16,11 @@ export default new Vuex.Store({
 		// 最新歌曲列表数据
 		newSongs:[],
 		// 上一首歌曲ID
-		preSongId:''
+		preSongId:'',
+		// 是否显示歌词页面
+		showLyrics:false,
+		// 歌曲播放时间
+		playtime:''
 	},
 	mutations: {
 		setCurrentSong(state, song) {
@@ -36,6 +40,12 @@ export default new Vuex.Store({
 		},
 		setPreSongId(state,Id){
 			state.preSongId = Id
+		},
+		setShowLyrics(state,show){
+			state.showLyrics = show
+		},
+		setPlaytime(state,time){
+			state.playtime = time
 		}
 	},
 	actions:{

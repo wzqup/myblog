@@ -8,8 +8,12 @@
                 v-loading="leftLoading"
                 element-loading-background="rgba(0, 0, 0, 0.2)"
             >
-                <img :src="currentSong.img+`?param=120y120`" />
+                <img :src="currentSong.img+`?param=120y120`"/>
             </div>
+			<div class="showLyricsIcon" @click="showLyricHandle">
+				<div class="top"><i :class="`el-icon-arrow-${showLyrics ? 'down':'up'}`"></i></div>
+				<div class="bottom"><i :class="`el-icon-arrow-${showLyrics ? 'up':'down'}`"></i></div>
+			</div>
             <div class="str" v-show="currentSong.name">
                 <p>{{ currentSong.name }}</p>
                 <p>
@@ -76,7 +80,7 @@ export default {
         audio() {
             return this.$refs.audio;
         },
-        ...mapState(["currentSong", "playing", "songList","preSongId"]),
+        ...mapState(["currentSong", "playing", "songList","preSongId","showLyrics"]),
     },
     watch: {
         // 监听当前歌曲是否发生变化 若变化 更新url 并播放
@@ -91,6 +95,12 @@ export default {
         },
     },
     methods: {
+		// 显示歌词
+		showLyricHandle(){
+			if (this.leftLoading) return;
+			this.setShowLyrics(!this.showLyrics);
+			// this.$emit('showLyric',true)
+		},
         // 播放器事件
         ready() {
             // 加载动画结束...
@@ -103,7 +113,8 @@ export default {
             this.next();
         },
         updateTime(e) {
-            this.currentMusicTime = e.target.currentTime;
+			this.currentMusicTime = e.target.currentTime;
+			this.setPlaytime(this.currentMusicTime);
         },
         play() {
             if (this.musicUrl == "") {
@@ -173,7 +184,7 @@ export default {
 			}
 
         },
-        ...mapMutations(["setPlaying", "setCurrentSong"]),
+        ...mapMutations(["setPlaying", "setCurrentSong","setShowLyrics","setPlaytime"]),
         // 时间格式
         formatTime(interval) {
             interval = interval | 0; // 浮点数赋值给变量不足1的会自动去掉

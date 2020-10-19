@@ -1,5 +1,5 @@
 <template>
-    <div class="home" :class="[padding ? 'has-padding':'no-padding']">
+    <div class="home" :class="[padding ? 'has-padding' : 'no-padding']">
         <!-- 侧边栏 -->
         <Aside />
         <!-- 内容区 -->
@@ -71,7 +71,7 @@ export default {
     color: white;
     transition: all 1s;
     padding-left: 12px;
-	background: url($baseUrl+'/fss.png');
+    background: url($baseUrl + "/fss.png");
     background-size: cover;
     &::before {
         content: "";
@@ -89,11 +89,14 @@ export default {
     box-sizing: border-box;
     overflow: auto;
     position: relative;
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
 @media screen and (max-width: 750px) {
     .home {
-		background:url($baseUrl+'/boy.png') center center;
-		background-size:100%;
+        background: url($baseUrl + "/boy.png");
+        background-size: cover;
         padding-left: 0px;
     }
     .home:not(.no-padding) {

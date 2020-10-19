@@ -16,17 +16,29 @@
                 </ul>
                 <h1 class="title">个人技能</h1>
                 <ul>
-                    <li>掌握web前端开发基本技能HTML，CSS，Javascript，可以高保真还原设计稿，有效解决和改善不同屏幕的适配问题</li>
-                    <li>对element等各类UI组件库，jquery、lodash等JS库，EJS等模板引擎有着较熟练的实践</li>
-                    <li>熟练使用ES6语法编程，熟练使用vue,vuex,vue-router,webpack,axios等相关技术进行应用开发,对React,ts,node.js有一定的了解</li>
-                    <li>熟悉模块化、组件化开发,熟悉sass,less等css扩展语言的使用</li>
-                    <li>熟练使用Git进行版本控制和代码托管、Markdown进行文档编写，postman进行接口测试，了解项目常规开发流程、开发调试技巧。</li>
+                    <li>
+                        掌握web前端开发基本技能HTML，CSS，Javascript，可以高保真还原设计稿，有效解决和改善不同屏幕的适配问题
+                    </li>
+                    <li>
+                        对element等各类UI组件库，jquery、lodash等JS库，EJS等模板引擎有着较熟练的实践
+                    </li>
+                    <li>
+                        熟练使用ES6语法编程，熟练使用vue,vuex,vue-router,webpack,axios等相关技术进行应用开发,对React,ts,node.js有一定的了解
+                    </li>
+                    <li>
+                        熟悉模块化、组件化开发,熟悉sass,less等css扩展语言的使用
+                    </li>
+                    <li>
+                        熟练使用Git进行版本控制和代码托管、Markdown进行文档编写，postman进行接口测试，了解项目常规开发流程、开发调试技巧。
+                    </li>
                 </ul>
                 <h1 class="title">自我评价</h1>
                 <ul>
                     <li>工作认真，心思细腻，乐于沟通</li>
                     <li>追求编码细节和代码规范，认真写好每一行代码</li>
-                    <li>拥有扎实的前端基础，擅长基于JavaScript开发各种Web应用</li>
+                    <li>
+                        拥有扎实的前端基础，擅长基于JavaScript开发各种Web应用
+                    </li>
                     <li>在大公司小公司都工作过，可以快速适应各种工作环境</li>
                 </ul>
                 <h1 class="title">工作经历</h1>
@@ -59,7 +71,7 @@
                 padding: 36px;
                 padding-left: 10px;
                 background-color: darkcyan;
-				border-radius: 6px;
+                border-radius: 6px;
                 li {
                     font-size: 16px;
                     line-height: 1.6;

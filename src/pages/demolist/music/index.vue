@@ -30,11 +30,7 @@
                 />
                 <i class="el-icon-search"></i>
             </div>
-            <div
-                class="hot"
-                v-show="seachHot"
-                ref="hotSearch"
-            >
+            <div class="hot" v-show="seachHot" ref="hotSearch">
                 <div class="hotSeach">
                     <div class="boxtitle">
                         热搜榜<span>{{ hotSearchContent }}</span>
@@ -46,7 +42,7 @@
                             :key="hotitem.score"
                             @click="clickHotSearch(hotitem.searchWord)"
                             @mouseenter="hoverSearchKeyWord(hotitem.content)"
-							@mouseleave="checkInHot = false"
+                            @mouseleave="checkInHot = false"
                         >
                             <span :alt="hotitem.content">{{
                                 index + 1 + "." + hotitem.searchWord
@@ -56,7 +52,7 @@
                                 :class="
                                     hotitem.iconType === 5 ? 'iconType5' : ''
                                 "
-								v-if="hotitem.iconUrl"
+                                v-if="hotitem.iconUrl"
                                 ><img :src="hotitem.iconUrl"
                             /></i>
                         </div>
@@ -69,7 +65,7 @@
                         :key="item.keyword"
                         @click="clickHotSearch(item.keyword)"
                         @mouseenter="checkInHot = true"
-						@mouseleave="checkInHot = false"
+                        @mouseleave="checkInHot = false"
                     >
                         {{ item.keyword }}
                     </p>
@@ -86,9 +82,12 @@
             ></MusicList>
         </div>
         <!-- 底部操作栏 -->
-        <div class="footer">
+        <div class="footer" :class="showLyrics ? 'blackBgc' : ''">
             <AudioBar></AudioBar>
         </div>
+        <keep-alive>
+            <LyricsPage v-if="showLyrics"></LyricsPage>
+        </keep-alive>
     </div>
 </template>
 
@@ -96,14 +95,16 @@
 import MusicList from "./components/musicList";
 import AudioBar from "./components/audioBar";
 import HotSinger from "./components/hotSinger";
+import LyricsPage from "./components/lyricsPage";
 import { musicRequest } from "@/utils/axios";
 import { checkIn } from "@/utils/helper";
-import { mapMutations } from 'vuex';
+import { mapMutations, mapState } from "vuex";
 export default {
     components: {
         MusicList,
         AudioBar,
         HotSinger,
+        LyricsPage,
     },
     data() {
         return {
@@ -116,11 +117,16 @@ export default {
             keyword: [],
             hotSearchContent: "",
         };
-	},
-	created(){
-		// 设置默认tab状态
-		this.setCurrentTab('new');
-	},
+    },
+    computed: {
+        ...mapState(["showLyrics"]),
+    },
+    created() {
+        // 设置默认tab状态
+        this.setCurrentTab("new");
+        // 重置歌词页显示状态
+        this.setShowLyrics(false);
+    },
     methods: {
         // 鼠标悬浮热搜榜
         hoverSearchKeyWord(content) {
@@ -138,8 +144,8 @@ export default {
             if (!this.checkInHot) this.seachHot = false;
         },
         changeCate(cate) {
-			this.tabActive = cate;
-			this.setCurrentTab(cate)
+            this.tabActive = cate;
+            this.setCurrentTab(cate);
         },
         async userEnter() {
             // 获取当前字符串
@@ -152,14 +158,14 @@ export default {
             } else {
                 this.keyword = [];
                 this.seachHotSongs = [];
-				this.tabActive = "new";
-				this.setCurrentTab("new");
-				this.hotSearchContent =''
+                this.tabActive = "new";
+                this.setCurrentTab("new");
+                this.hotSearchContent = "";
             }
         },
         async clickHotSearch(searchWord) {
-			this.keyword = [];
-			this.searchKeyWord = searchWord;
+            this.keyword = [];
+            this.searchKeyWord = searchWord;
             // 获取搜索数据
             const {
                 result: { songs: data },
@@ -189,6 +195,12 @@ export default {
             this.seachHot = false;
             this.tabActive = "search";
         },
+        // 歌词
+        // showLyricView(show){
+        // 	console.log("showLyicView");
+        // 	console.log(show);
+        // 	this.showLyrics = show;
+        // },
         //--------------------- 接口 -----------------------
         // 获取搜索歌曲数据
         getSearchSong(searchWord) {
@@ -203,8 +215,8 @@ export default {
             return musicRequest(
                 `/search/suggest?keywords=${keyword}&type=mobile`
             );
-		},
-		...mapMutations(['setCurrentTab'])
+        },
+        ...mapMutations(["setCurrentTab", "setShowLyrics"]),
     },
 };
 </script>
@@ -217,6 +229,7 @@ export default {
     flex-direction: column;
     font-size: 14px;
     color: #ccc;
+    position: relative;
     .nav {
         position: relative;
         .tab {
@@ -271,7 +284,7 @@ export default {
             background-color: rgba(0, 0, 0, 0.8);
             color: #fff;
             padding: 10px;
-			display: flex;
+            display: flex;
             .hotSeach {
                 width: 580px;
                 .boxtitle {
@@ -287,30 +300,32 @@ export default {
                 }
                 .hotitem-wrap {
                     width: 100%;
-					margin-top: 6px;
-					overflow: hidden;
+                    margin-top: 6px;
+                    overflow: hidden;
+                    background: url($baseUrl + "/ez.png") no-repeat 346px 81px;
+                    background-size: 300px;
                     .item {
                         float: left;
-						margin-bottom: 8px;
-						height: 18px;
-						width: 50%;
+                        margin-bottom: 8px;
+                        height: 18px;
+                        width: 50%;
                         &:hover {
                             cursor: pointer;
                             color: springgreen;
-                            &::after{
-								content: "👈";
-								margin-left: 6px;
+                            &::after {
+                                content: "👈";
+                                margin-left: 6px;
                             }
-						}
+                        }
                         .iconImg {
-							width: 36px;
+                            width: 36px;
                             height: 18px;
                             display: inline-block;
                             margin-left: 6px;
                             vertical-align: middle;
                             &.iconType5 {
-								width: 12px;
-								height: 14px;
+                                width: 12px;
+                                height: 14px;
                             }
                             img {
                                 width: 100%;
@@ -324,11 +339,11 @@ export default {
                 flex: 1;
                 padding: 0 6px 6px 6px;
                 .wordItem {
-					margin-bottom: 10px;
-					&:hover{
-						color: springgreen;
-						cursor: pointer;
-					}
+                    margin-bottom: 10px;
+                    &:hover {
+                        color: springgreen;
+                        cursor: pointer;
+                    }
                 }
             }
         }
@@ -367,18 +382,22 @@ export default {
                     width: 50px;
                     height: 50px;
                     margin-right: 10px;
-                    position: relative;
                     img {
                         width: 100%;
                     }
-                    &::before {
-                        content: "";
-                        position: absolute;
-                        left: 0;
-                        bottom: 0;
-                        top: 0;
-                        right: 0;
-                        background: rgba(0, 0, 0, 0.5);
+                }
+                .showLyricsIcon {
+                    position: absolute;
+                    width: 50px;
+                    height: 50px;
+                    background-color: rgba(0, 0, 0, 0.5);
+                    text-align: center;
+                    div {
+                        width: 100%;
+                        height: 50%;
+                        line-height: 25px;
+                        color: #fff;
+                        font-size: 26px;
                     }
                 }
             }
@@ -420,12 +439,15 @@ export default {
     }
     .nav,
     .footer {
-		height: 60px;
+        height: 60px;
         padding: 6px;
         background-color: slateblue;
+        &.blackBgc {
+            background-color: #252525;
+        }
     }
     .viewBox {
-		height: 480px;
+        height: 480px;
     }
 }
 </style>

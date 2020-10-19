@@ -16,7 +16,7 @@ export default {
         };
     },
     mounted() {
-        this.timer = this.typeist("Hello , I'm Wzq ..");
+        this.timer = this.typeist(`Hello, welcome to my website！`);
     },
     methods: {
         typeist(str) {
@@ -85,15 +85,18 @@ export default {
         background-color: rgba($color: #000000, $alpha: 0.6);
         box-shadow: 8px 8px 3px 0px rgba($color: #000000, $alpha: 0.8);
         text-align: center;
-        font-size: 66px;
+        font-size: 56px;
         position: relative;
         z-index: 2;
-        color: #eee;
+		color: #ccc;
+        H1 {
+            color: springgreen;
+        }
         padding: 30px 10px;
         .blink {
             &::after {
                 content: "|";
-                animation: move 0.5s 1;
+                animation: move .5s infinite;
             }
         }
         .go {
@@ -103,7 +106,6 @@ export default {
             padding: 6px 30px;
             font-size: 16px;
             cursor: pointer;
-
             background: linear-gradient(0, #ffc700 2px, #ffc700 0) no-repeat 0 0/0
                     2px,
                 linear-gradient(-90deg, #ffc700 2px, #ffc700 0) no-repeat 100% 0/2px
@@ -115,6 +117,7 @@ export default {
             transition: all 0.5s;
             &:hover {
                 border-radius: 0;
+				color: #fff;
                 background-size: 100% 2px, 2px 100%, 100% 2px, 2px 100%;
                 -webkit-transform: translate3d(0, -10px, 0) scale(1.05);
                 transform: translate3d(0, -10px, 0) scale(1.05);
@@ -124,8 +127,8 @@ export default {
 }
 @media screen and (max-width: 750px) {
     .index-page {
-        background: url($baseUrl + "/fj.jpg");
-		background-size: cover;
+        background: url($baseUrl + "/boy.png");
+        background-size: cover;
     }
 }
 </style>

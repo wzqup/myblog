@@ -527,7 +527,7 @@ div {
     box-sizing: border-box;
 }
 .black.time-bar {
-    background-color: #131417;
+	background-color: #131417;
     .str {
         color: #eeeeee;
     }

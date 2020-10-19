@@ -1,44 +1,69 @@
 <template>
     <aside
         class="aside"
-        :class="[trsin ? 'trs-in':'trs-out']"
+        :class="[trsin ? 'trs-in' : 'trs-out']"
         @mouseenter="showBtnFn"
         @mouseleave="hidBtnFn"
     >
-        <div class="logo">CODE MAN</div>
+        <div class="logo" @click="$router.push('/')">CODE MAN</div>
         <div class="photoBox">
             <div class="photo">
-                <img class="tx" src="http://deep-brez.gitee.io/img/mypage/me.png" alt />
+                <img
+                    class="tx"
+                    src="http://deep-brez.gitee.io/img/mypage/me.png"
+                    alt
+                />
             </div>
         </div>
         <div class="menu">
-            <h2>项目展示</h2>
-            <ul class="list-wrap">
-                <li class="list-item" :class="[active === 'project' ? 'active' : '']">
-                    <router-link to="/project">项目经历</router-link>
-                </li>
-                <li class="list-item" :class="[active === 'demolist' ? 'active' : '']">
-                    <router-link to="/demolist">DEMO</router-link>
-                </li>
-                <li class="list-item" :class="[active === 'myblog' ? 'active' : '']">
-                    <router-link to="/myblog">我的博客</router-link>
-                </li>
-            </ul>
             <h2>个人信息</h2>
-            <ul class="list-wrap height2">
-                <li class="list-item" :class="[active === 'aboutme' ? 'active':'']">
+            <ul class="list-wrap">
+                <li
+                    class="list-item"
+                    :class="[active === 'aboutme' ? 'active' : '']"
+                >
                     <router-link to="/aboutme">关于我</router-link>
                 </li>
-                <li class="list-item" :class="[active === 'cv' ? 'active' : '']">
+                <li
+                    class="list-item"
+                    :class="[active === 'cv' ? 'active' : '']"
+                >
                     <router-link to="/cv">我的简历</router-link>
+                </li>
+                <li
+                    class="list-item"
+                    :class="[active === 'project' ? 'active' : '']"
+                >
+                    <router-link to="/project">项目经历</router-link>
+                </li>
+            </ul>
+            <h2>项目展示</h2>
+            <ul class="list-wrap height2">
+                <li
+                    class="list-item"
+                    :class="[active === 'demolist' ? 'active' : '']"
+                >
+                    <router-link to="/demolist">DEMO</router-link>
+                </li>
+                <li
+                    class="list-item"
+                    :class="[active === 'myblog' ? 'active' : '']"
+                >
+                    <router-link to="/myblog">我的博客</router-link>
                 </li>
             </ul>
             <h2>其它</h2>
             <ul class="list-wrap height2">
-                <li class="list-item" :class="[active === 'favorites' ? 'active' : '']">
+                <li
+                    class="list-item"
+                    :class="[active === 'favorites' ? 'active' : '']"
+                >
                     <router-link to="/favorites">我的收藏</router-link>
                 </li>
-                <li class="list-item" :class="[active === 'message' ? 'active' : '']">
+                <li
+                    class="list-item"
+                    :class="[active === 'message' ? 'active' : '']"
+                >
                     <router-link to="/message">给我留言</router-link>
                 </li>
             </ul>
@@ -52,11 +77,14 @@
                     @mouseleave="hidBarAnm"
                     v-show="showBtn"
                 >
-                    <i class="iconfont" :class="[trsin ? 'icon-huaban': 'icon-huaban1']"></i>
+                    <i
+                        class="iconfont"
+                        :class="[trsin ? 'icon-huaban' : 'icon-huaban1']"
+                    ></i>
                 </div>
             </transition>
             <transition name="fade">
-                <div class="side-bar" :class="[barAnm ? 'anm':'']"></div>
+                <div class="side-bar" :class="[barAnm ? 'anm' : '']"></div>
             </transition>
         </div>
     </aside>
@@ -75,11 +103,7 @@ export default {
     },
     mounted() {
         this.switch = document.body.clientWidth > 750;
-
-        window.onresize = () => {
-            this.switch = document.body.clientWidth > 750;
-            if (!this.switch) this.showBtn = true;
-        };
+        if (!this.switch) this.showBtn = true;
     },
     methods: {
         // 点击收起按钮
@@ -136,6 +160,10 @@ export default {
         font-size: 26px;
         @include lgStr($bgColor);
         animation: strAnm 2s linear 2;
+        &:hover {
+            animation: strAnm 2s linear infinite;
+			cursor: pointer;
+        }
     }
     .photoBox {
         @include flex-center;
@@ -277,22 +305,5 @@ export default {
 .trs-enter,
 .trs-leave-to {
     transform: translateX(-12px);
-}
-
-@keyframes pyAnm {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-188px);
-    }
-}
-
-@media screen and (max-width: 750px) {
-    .aside {
-        .side .btn {
-            animation: pyAnm 1s 2;
-        }
-    }
 }
 </style>
