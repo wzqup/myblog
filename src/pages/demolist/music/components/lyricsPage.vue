@@ -2,9 +2,9 @@
     <div class="lyrics-page">
         <!-- 旋转图部分 -->
         <div class="left-play-bar" :class="playing ? 'playing' : 'paused'">
-            <img src="@/assets/image/play-bar.png" class="play-bar" />
+            <img src="../../../../assets/image/play-bar.png" class="play-bar" />
             <img
-                src="@/assets/image/play-bar-support.png"
+                src="../../../../assets/image/play-bar-support.png"
                 class="play-bar-support"
             />
             <div class="play-img-wrap">

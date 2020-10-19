@@ -2,22 +2,22 @@
     <div class="cube-page">
         <div class="bigBox">
             <div class="top circle">
-                <img src="https://deep-brez.gitee.io/img/mypage/cube.gif" />
+                <img src="https://deep-brez.gitee.io/imglibrary/mypage/cube.gif" />
             </div>
             <div class="bottom circle">
-                <img src="https://deep-brez.gitee.io/img/mypage/cube.gif" />
+                <img src="https://deep-brez.gitee.io/imglibrary/mypage/cube.gif" />
             </div>
             <div class="left circle">
-                <img src="https://deep-brez.gitee.io/img/mypage/cube.gif" />
+                <img src="https://deep-brez.gitee.io/imglibrary/mypage/cube.gif" />
             </div>
             <div class="right circle">
-                <img src="https://deep-brez.gitee.io/img/mypage/cube.gif" />
+                <img src="https://deep-brez.gitee.io/imglibrary/mypage/cube.gif" />
             </div>
             <div class="inside circle">
-                <img src="https://deep-brez.gitee.io/img/mypage/cube.gif" />
+                <img src="https://deep-brez.gitee.io/imglibrary/mypage/cube.gif" />
             </div>
             <div class="outside circle">
-                <img src="https://deep-brez.gitee.io/img/mypage/cube.gif" />
+                <img src="https://deep-brez.gitee.io/imglibrary/mypage/cube.gif" />
             </div>
         </div>
     </div>

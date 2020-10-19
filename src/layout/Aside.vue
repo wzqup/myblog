@@ -10,7 +10,7 @@
             <div class="photo">
                 <img
                     class="tx"
-                    src="http://deep-brez.gitee.io/img/mypage/me.png"
+                    src="http://deep-brez.gitee.io/imglibrary/mypage/me.png"
                     alt
                 />
             </div>

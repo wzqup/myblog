@@ -98,7 +98,7 @@ export default {
                     id: "3",
                     url: "",
                     content: "项目报备系统&Vue",
-                    imgUrl: "http://deep-brez.gitee.io/img/mypage/bb.jpg",
+                    imgUrl: "http://deep-brez.gitee.io/imglibrary/mypage/bb.jpg",
                     ex: [],
                     tec: [
                         "Vue",
@@ -122,7 +122,7 @@ export default {
                     id: "4",
                     url: "https://www.qwdzkj.com/",
                     content: "乔威电子&jquery、bootstrap",
-                    imgUrl: "http://deep-brez.gitee.io/img/mypage/qw.jpg",
+                    imgUrl: "http://deep-brez.gitee.io/imglibrary/mypage/qw.jpg",
                     ex: [],
                     tec: ["bootstrap", "jquery", "swiper", "animate"],
                     work: ["根据交互设计稿完成对应页面的搭建及交互实现  "],
